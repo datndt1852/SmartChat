@@ -1,3 +1,9 @@
 export const LOGO_APP = require('./source/logo_app.png');
 export const LOGO_GOOGLE = require('./source/logo_google.png');
 export const LOGO_FACEBOOK = require('./source/logo_facebook.png');
+export const ICON_SEARCH = require('./source/icon_search.png');
+export const ICON_SETTING = require('./source/icon_setting.png');
+export const AVATAR = require('./source/placeholder.png');
+export const BUTTON_BACK_WHITE = require('./source/ico_back.png');
+export const BUTTON_SHOW_PASSWORD = require('./source/eye.png');
+export const LOGO_NO_MESSAGES = require('./source/logo_nomess.png');

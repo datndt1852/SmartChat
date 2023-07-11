@@ -1,8 +1,13 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {Color, FontSize} from '../../theme/IndexTheme';
-import {ICON_SEARCH, ICON_SETTING} from '../../theme/image/IndexSourceImage';
+import {FontSize} from '../../theme/IndexTheme';
+import {
+  ICON_SEARCH,
+  ICON_SETTING,
+  LOGO_NO_MESSAGES,
+} from '../../theme/image/IndexSourceImage';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {STYLES} from '../../theme/styles/IndexStyles';
 
 const HomeScreen = ({navigation}: any) => {
   return (
@@ -16,11 +21,19 @@ const HomeScreen = ({navigation}: any) => {
       </View>
       {/* Main */}
       <View style={styles.main}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('InboxScreen')}>
-          <Text style={styles.signin_button}>Start Inbox</Text>
-        </TouchableOpacity>
+        {/* Input zone */}
+        <View style={STYLES.content_zone}>
+          <Image source={LOGO_NO_MESSAGES} />
+          <Text>No messages so far.</Text>
+        </View>
+        {/* Action zone */}
+        <View style={STYLES.action_zone}>
+          <TouchableOpacity
+            style={STYLES.normal_button}
+            onPress={() => navigation.navigate('InboxScreen')}>
+            <Text style={STYLES.text_normal_button}>Start a chat</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -55,18 +68,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 40,
     justifyContent: 'center',
-  },
-  button: {
-    backgroundColor: Color.royalblue,
-    paddingHorizontal: 80,
-    paddingVertical: 12,
-    borderRadius: 12,
-    marginHorizontal: 20,
-  },
-  signin_button: {
-    fontSize: 18,
-    color: 'white',
-    textAlign: 'center',
   },
 });
 export default HomeScreen;
