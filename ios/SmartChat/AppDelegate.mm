@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #import <Firebase.h>
+#import <RNGoogleSignin/RNGoogleSignin.h>
 
 #import <React/RCTBundleURLProvider.h>
 
@@ -23,6 +24,9 @@
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
+}
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  return [RNGoogleSignin application:application openURL:url options:options];
 }
 
 @end

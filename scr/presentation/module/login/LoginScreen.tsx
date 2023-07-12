@@ -136,4 +136,5 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
 });
+// @ts-ignore
 export default LoginScreen;
