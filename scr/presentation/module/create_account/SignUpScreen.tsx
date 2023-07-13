@@ -17,8 +17,6 @@ import {FontSize} from '../../theme/IndexTheme';
 import {Color} from '../../theme/color/Colors';
 import {STYLES} from '../../theme/styles/IndexStyles';
 import {ScrollView} from 'react-native-gesture-handler';
-import uuid from 'react-native-uuid';
-import database from '@react-native-firebase/database';
 
 const SignUpScreen = ({navigation}: any) => {
   const [email, setEmail] = useState('');
@@ -30,24 +28,6 @@ const SignUpScreen = ({navigation}: any) => {
     setShowPassword(!showPassword);
   };
 
-  const registerUser = async () => {
-    let data = {
-      id: uuid.v4(),
-      name: name,
-      email: email,
-      password: pass,
-    };
-    database()
-      .ref('users/' + data.id)
-      .set(data)
-      .then(() => {
-        setCfPass('');
-        setEmail('');
-        setName('');
-        setPass('');
-        navigation.navigate('LoginScreen');
-      });
-  };
   return (
     <View style={styles.container}>
       <View style={STYLES.header_screen}>
@@ -70,7 +50,6 @@ const SignUpScreen = ({navigation}: any) => {
               style={STYLES.box_input}
               onChangeText={setName}
               placeholder="Full name"
-              autoCapitalize="none"
             />
             <Text style={STYLES.invalid_notification}>
               Email or Password is incorrect
@@ -81,7 +60,6 @@ const SignUpScreen = ({navigation}: any) => {
               onChangeText={setEmail}
               placeholder="Email"
               keyboardType="email-address"
-              autoCapitalize="none"
             />
             <Text style={STYLES.invalid_notification}>Invalid Email</Text>
             {/* Enter Password */}
@@ -90,7 +68,6 @@ const SignUpScreen = ({navigation}: any) => {
                 value={pass}
                 style={STYLES.box_input_pass}
                 onChangeText={setPass}
-                autoCapitalize="none"
                 placeholder="Password"
                 keyboardType="visible-password"
                 secureTextEntry={!showPassword}
@@ -110,7 +87,6 @@ const SignUpScreen = ({navigation}: any) => {
                 onChangeText={setCfPass}
                 placeholder="Password"
                 keyboardType="visible-password"
-                autoCapitalize="none"
                 secureTextEntry={!showPassword}
               />
               <TouchableOpacity onPress={toggleShowPassword}>
@@ -125,7 +101,7 @@ const SignUpScreen = ({navigation}: any) => {
           <View style={styles.action_zone}>
             <TouchableOpacity
               style={STYLES.normal_button}
-              onPress={registerUser}>
+              onPress={() => navigation.navigate('HomeScreen')}>
               <Text style={STYLES.text_normal_button}>Create my account</Text>
             </TouchableOpacity>
             {/* Login with Google or SignIn */}
