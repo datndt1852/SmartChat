@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 import {LOGO_APP} from '../../theme/image/IndexSourceImage';
 
-const SplashScreen = ({navigation}) => {
+const SplashScreen = ({navigation}: any) => {
   useEffect(() => {
     setTimeout(() => {
       navigation.replace('LoginScreen');

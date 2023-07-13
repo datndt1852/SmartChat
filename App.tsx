@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { NavigationContainer, Route } from '@react-navigation/native';
+import React, {useState} from 'react';
+import {NavigationContainer, Route} from '@react-navigation/native';
 import AppNavigator from './scr/presentation/module/navigator/AppNavigator';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 
 const App = () => {
   const [currentScreen, setCurrentScreen] = useState<string>('SplashScreen');
@@ -17,9 +17,10 @@ const App = () => {
           flex: 1,
           backgroundColor:
             currentScreen === 'SplashScreen' ? '#FFFFFF' : '#376AED',
-        }} edges={['top']}>
+        }}
+        edges={['top']}>
         <NavigationContainer
-          onStateChange={(state: { routes: Route[]; index: number }): void => {
+          onStateChange={(state: {routes: Route[]; index: number}): void => {
             const currentRoute = state.routes[state.index].name;
             handleScreenChange(currentRoute);
           }}>

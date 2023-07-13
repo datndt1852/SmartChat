@@ -7,44 +7,56 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {FontSize, Color} from '../../theme/IndexTheme';
-import {LOGO_FACEBOOK, LOGO_GOOGLE} from '../../theme/image/IndexSourceImage';
+import {FontSize} from '../../theme/IndexTheme';
+import {
+  LOGO_FACEBOOK,
+  LOGO_GOOGLE,
+  BUTTON_BACK_WHITE,
+} from '../../theme/image/IndexSourceImage';
+import {Color} from '../../theme/color/Colors';
+import {STYLES} from '../../theme/styles/IndexStyles';
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({navigation}: any) => {
   const [email, onChangeText] = useState('');
   const [pass, onChangePass] = useState('');
-
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title_screen}> Sign In </Text>
-        <Text style={styles.des_screen}>
+      <View style={STYLES.header_screen}>
+        <View style={STYLES.top_header}>
+          <Image style={STYLES.button_back} source={BUTTON_BACK_WHITE} />
+          <Text style={STYLES.title_screen}> Sign In </Text>
+          <View style={STYLES.empty_button} />
+        </View>
+        <Text style={STYLES.des_screen}>
           Enter your credentials to Log In your account
         </Text>
       </View>
       {/* Main */}
-      <View style={styles.main}>
+      <View style={STYLES.main_screen}>
         {/* Zone Input */}
         <View style={styles.input_zone}>
           <TextInput
             value={email}
-            style={styles.box_input}
+            style={STYLES.box_input}
             onChangeText={onChangeText}
             placeholder="Email"
             keyboardType="email-address"
           />
-          <Text style={styles.invalid_notification}>Invalid Email</Text>
+          <Text style={STYLES.invalid_notification}>Invalid Email</Text>
           <TextInput
             value={pass}
-            style={styles.box_input}
+            style={STYLES.box_input}
             onChangeText={onChangePass}
             placeholder="Password"
             keyboardType="visible-password"
             secureTextEntry={true}
           />
           <View style={styles.bottom_password}>
-            <Text style={styles.forgot_password}>Forgot Password?</Text>
-            <Text style={styles.invalid_notification}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ForgotPasswordScreen')}>
+              <Text style={styles.forgot_password}>Forgot Password?</Text>
+            </TouchableOpacity>
+            <Text style={STYLES.invalid_notification}>
               Email or Password is incorrect
             </Text>
           </View>
@@ -52,18 +64,25 @@ const LoginScreen = ({navigation}) => {
         {/* Zone Action */}
         <View style={styles.action_zone}>
           <TouchableOpacity
-            style={styles.button}
+            style={STYLES.normal_button}
             onPress={() => navigation.navigate('HomeScreen')}>
-            <Text style={styles.signin_button}>Sign In</Text>
+            <Text style={STYLES.text_normal_button}>Sign In</Text>
           </TouchableOpacity>
-          <Text>OR continue with</Text>
-          <View style={styles.view_content}>
-            <Image source={LOGO_GOOGLE} />
-            <Image source={LOGO_FACEBOOK} />
-          </View>
-          <View style={styles.view_content}>
-            <Text style={styles.content}>Don’t have account?</Text>
-            <Text style={styles.create_account}>create account</Text>
+          {/* Login with Google or SignIn */}
+          <View style={styles.other_login}>
+            <Text>OR continue with</Text>
+            <View style={styles.view_content}>
+              <Image style={STYLES.logo_login} source={LOGO_GOOGLE} />
+              <Image style={STYLES.logo_login} source={LOGO_FACEBOOK} />
+            </View>
+            <View style={styles.view_content}>
+              <Text style={styles.content}>Don’t have account?</Text>
+              <TouchableOpacity
+                style={styles.content}
+                onPress={() => navigation.navigate('SignUpScreen')}>
+                <Text style={styles.create_account}>create account</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
@@ -75,42 +94,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#376AED',
   },
-  title_screen: {
-    fontSize: FontSize.Large,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  des_screen: {
-    fontSize: FontSize.Default,
-    fontFamily: 'Roboto_regular',
-    color: '#fff',
-  },
-  header: {
-    flex: 2,
-    paddingVertical: 5,
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-  },
-  main: {
-    flex: 8,
-    backgroundColor: '#fff',
-    width: '100%',
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
-    paddingHorizontal: 30,
-    paddingVertical: 40,
-  },
   input_zone: {
     flex: 1,
-  },
-  box_input: {
-    backgroundColor: '#E0E0E0',
-    fontSize: FontSize.Default,
-    paddingHorizontal: 22,
-    paddingVertical: 15,
-    borderRadius: 12,
-    marginTop: 10,
-    color: '#7D7C7C',
   },
   bottom_password: {
     flexDirection: 'row',
@@ -131,31 +116,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
-  button: {
-    backgroundColor: Color.royalblue,
-    paddingHorizontal: 80,
-    paddingVertical: 12,
-    borderRadius: 12,
-  },
-  signin_button: {
-    fontSize: 18,
-    color: 'white',
-  },
   view_content: {
     flexDirection: 'row',
     paddingHorizontal: 10,
     justifyContent: 'space-between',
   },
   content: {
-    // flex: 1,
     fontSize: FontSize.Medium,
-    textAlign: 'right',
+    padding: 4,
   },
   create_account: {
-    // flex: 1,
     fontSize: FontSize.Medium,
     textAlign: 'left',
     color: Color.royalblue,
   },
+  other_login: {
+    alignContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
 });
+// @ts-ignore
 export default LoginScreen;
