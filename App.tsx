@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {NavigationContainer, Route} from '@react-navigation/native';
-import AppNavigator from './app/presentation/module/navigator/AppNavigator';
+import AppNavigator from './app/presentation/navigator/AppNavigator';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 
 const App = () => {

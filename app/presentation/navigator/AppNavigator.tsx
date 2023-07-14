@@ -1,11 +1,11 @@
 import React from 'react';
-import LoginScreen from '../login/LoginScreen';
-import SplashScreen from '../splash/SplashScreen';
+import LoginScreen from '../module/login/LoginScreen';
+import SplashScreen from '../module/splash/SplashScreen';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../home/HomeScreen';
-import InboxScreen from '../inbox/InboxScreen';
-import SignUpScreen from '../create_account/SignUpScreen';
-import ForgotPasswordScreen from '../forgot_password/ForgotPasswordScreen';
+import HomeScreen from '../module/home/HomeScreen';
+import InboxScreen from '../module/inbox/InboxScreen';
+import SignUpScreen from '../module/create_account/SignUpScreen';
+import ForgotPasswordScreen from '../module/forgot_password/ForgotPasswordScreen';
 
 const Stack = createStackNavigator();
 
