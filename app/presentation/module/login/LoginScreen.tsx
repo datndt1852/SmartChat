@@ -15,10 +15,19 @@ import {
 } from '../../theme/image/IndexSourceImage';
 import {Color} from '../../theme/color/Colors';
 import {STYLES} from '../../theme/styles/IndexStyles';
+import {useDispatch} from 'react-redux';
 
 const LoginScreen = ({navigation}: any) => {
   const [email, onChangeText] = useState('');
   const [pass, onChangePass] = useState('');
+
+  const dispatch = useDispatch();
+
+  const handleLogin = () => {
+    // dispatch(login(email, pass));
+    navigation.navigate('HomeScreen');
+  };
+
   return (
     <View style={styles.container}>
       <View style={STYLES.header_screen}>
@@ -63,9 +72,7 @@ const LoginScreen = ({navigation}: any) => {
         </View>
         {/* Zone Action */}
         <View style={styles.action_zone}>
-          <TouchableOpacity
-            style={STYLES.normal_button}
-            onPress={() => navigation.navigate('HomeScreen')}>
+          <TouchableOpacity style={STYLES.normal_button} onPress={handleLogin}>
             <Text style={STYLES.text_normal_button}>Sign In</Text>
           </TouchableOpacity>
           {/* Login with Google or SignIn */}
@@ -92,7 +99,7 @@ const LoginScreen = ({navigation}: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#376AED',
+    backgroundColor: Color.royalblue,
   },
   input_zone: {
     flex: 1,

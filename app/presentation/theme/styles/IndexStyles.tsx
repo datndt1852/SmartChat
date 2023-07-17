@@ -98,4 +98,26 @@ export const STYLES = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 30,
   },
+  container: {
+    flex: 1,
+    backgroundColor: Color.royalblue,
+  },
+  container_white: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  main_screen_gray: {
+    flex: 9,
+    backgroundColor: '#e9e7e7',
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+  },
+  second_main_screen: {
+    flex: 6,
+    backgroundColor: 'white',
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+    paddingHorizontal: 50,
+    paddingVertical: 40,
+  },
 });

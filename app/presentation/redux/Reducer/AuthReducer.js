@@ -1,4 +1,3 @@
-// authReducer.js
 const initialState = {
   user: null,
   error: null,
