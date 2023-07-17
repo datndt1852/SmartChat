@@ -2,8 +2,8 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {FontSize} from '../../theme/IndexTheme';
 import {
+  ICON_MENU,
   ICON_SEARCH,
-  ICON_SETTING,
   LOGO_NO_MESSAGES,
 } from '../../theme/image/IndexSourceImage';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -16,7 +16,9 @@ const HomeScreen = ({navigation}: any) => {
         <Text style={styles.title_screen}>Conversations</Text>
         <View style={styles.action_zone}>
           <Image source={ICON_SEARCH} />
-          <Image source={ICON_SETTING} />
+          <TouchableOpacity onPress={() => navigation.navigate('MenuScreen')}>
+            <Image source={ICON_MENU} />
+          </TouchableOpacity>
         </View>
       </View>
       {/* Main */}

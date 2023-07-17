@@ -1,4 +1,4 @@
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {STYLES} from '../../theme/styles/IndexStyles';
 import {
@@ -12,12 +12,14 @@ import {
 } from '../../theme/image/IndexSourceImage';
 import {FontSize} from '../../theme/IndexTheme';
 
-const MenuScreen = () => {
+const MenuScreen = ({navigation}) => {
   return (
     <View style={STYLES.container_white}>
       <View style={STYLES.header_screen}>
         <View style={styles.navigator_bar}>
-          <Image source={BUTTON_BACK_BLACK} />
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image source={BUTTON_BACK_BLACK} />
+          </TouchableOpacity>
         </View>
         <Image source={LOGO_APP_157} style={{width: 145.5, height: 156.5}} />
       </View>
