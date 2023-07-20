@@ -9,6 +9,7 @@ export const FontSize = {
   Small: 12,
   Medium: 14,
   Default: 16,
+  Bigger: 20,
   Large: 30,
 };
 /* border radiuses */

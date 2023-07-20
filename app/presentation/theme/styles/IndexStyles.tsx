@@ -32,7 +32,7 @@ export const STYLES = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 54,
-    marginTop: 30,
+    marginTop: 5,
     paddingHorizontal: 36,
   },
   button_back: {
@@ -104,7 +104,11 @@ export const STYLES = StyleSheet.create({
   },
   container_white: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: Color.white,
+  },
+  container_info_user: {
+    flex: 1,
+    backgroundColor: Color.moss,
   },
   main_screen_gray: {
     flex: 9,
@@ -119,5 +123,9 @@ export const STYLES = StyleSheet.create({
     borderTopRightRadius: 50,
     paddingHorizontal: 50,
     paddingVertical: 40,
+  },
+  avatar_info: {
+    height: 120,
+    width: 120,
   },
 });

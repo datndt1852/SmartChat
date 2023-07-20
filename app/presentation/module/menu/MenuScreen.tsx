@@ -1,4 +1,11 @@
-import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import {STYLES} from '../../theme/styles/IndexStyles';
 import {
@@ -24,13 +31,15 @@ const MenuScreen = ({navigation}) => {
         <Image source={LOGO_APP_157} style={{width: 145.5, height: 156.5}} />
       </View>
       <View style={STYLES.main_screen_gray}>
-        <View style={styles.info}>
-          <Image source={AVATAR} style={styles.avatar} />
-          <View style={styles.detail_info}>
-            <Text style={styles.user_name}>Bilal Mustafa</Text>
-            <Text style={styles.email}>thedesignerpk@outlook.com</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('InfoUserScreen')}>
+          <View style={styles.info}>
+            <Image source={AVATAR} style={styles.avatar} />
+            <View style={styles.detail_info}>
+              <Text style={styles.user_name}>Bilal Mustafa</Text>
+              <Text style={styles.email}>thedesignerpk@outlook.com</Text>
+            </View>
           </View>
-        </View>
+        </TouchableOpacity>
 
         <View style={{flex: 1}}>
           <ScrollView style={STYLES.second_main_screen}>

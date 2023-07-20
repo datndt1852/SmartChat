@@ -19,7 +19,11 @@ const App = () => {
           style={{
             flex: 1,
             backgroundColor:
-              currentScreen === 'SplashScreen' ? '#FFFFFF' : '#376AED',
+              currentScreen === 'SplashScreen' || currentScreen === 'MenuScreen'
+                ? '#FFFFFF'
+                : currentScreen === 'InfoUserScreen'
+                ? '#979354'
+                : '#376AED',
           }}
           edges={['top']}>
           <NavigationContainer

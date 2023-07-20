@@ -7,6 +7,7 @@ import InboxScreen from '../module/inbox/InboxScreen';
 import SignUpScreen from '../module/create_account/SignUpScreen';
 import ForgotPasswordScreen from '../module/forgot_password/ForgotPasswordScreen';
 import MenuScreen from '../module/menu/MenuScreen';
+import InfoUserScreen from '../module/info_user/InfoUserScreen';
 
 const Stack = createStackNavigator();
 
@@ -46,6 +47,11 @@ const AppNavigator = () => {
       <Stack.Screen
         name="MenuScreen"
         component={MenuScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="InfoUserScreen"
+        component={InfoUserScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
