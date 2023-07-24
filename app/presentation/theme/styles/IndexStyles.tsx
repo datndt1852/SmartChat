@@ -87,6 +87,8 @@ export const STYLES = StyleSheet.create({
   },
   logo_login: {
     margin: 10,
+    width: 40,
+    height: 40,
   },
   action_zone: {
     flex: 1.5,
