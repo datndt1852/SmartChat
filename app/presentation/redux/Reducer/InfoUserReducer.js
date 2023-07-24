@@ -5,7 +5,7 @@ const initialState = {
   password: '',
 };
 
-export default function infoUserReducer(state = initialState, payload) {
+const infoUserReducer = (state = initialState, payload) => {
   switch (payload.type) {
     case 'SET_EMAIL':
       return {
@@ -22,5 +22,9 @@ export default function infoUserReducer(state = initialState, payload) {
         ...state,
         name: payload.name,
       };
+    default:
+      return state;
   }
-}
+};
+
+export default infoUserReducer;

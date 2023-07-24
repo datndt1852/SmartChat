@@ -1,10 +1,10 @@
-import {combineReducers} from 'redux';
 import authReducer from './AuthReducer';
 import infoUserReducer from './InfoUserReducer';
+import {combineReducers} from '@reduxjs/toolkit';
 
 const rootReducer = combineReducers({
   auth: authReducer,
   info: infoUserReducer,
 });
 
-export default (state, action) => rootReducer(state, action);
+export default rootReducer;
