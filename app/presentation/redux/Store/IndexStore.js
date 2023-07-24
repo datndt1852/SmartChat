@@ -1,9 +1,8 @@
 // store.js
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
+import {applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from '../IndexReducer';
+import rootReducer from '../Reducer/RootReducer';
+import {configureStore} from '@reduxjs/toolkit';
+// redux-logger
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
-
-export default store;
+export const store = configureStore(rootReducer, applyMiddleware(thunk));
