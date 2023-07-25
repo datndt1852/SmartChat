@@ -16,6 +16,8 @@ import {
 import {Color} from '../../theme/color/Colors';
 import {STYLES} from '../../theme/styles/IndexStyles';
 import {useDispatch} from 'react-redux';
+import database from '@react-native-firebase/database';
+import {setUser} from '../../redux/Reducer/AuthReducer.js';
 
 const LoginScreen = ({navigation}: any) => {
   const [email, onChangeText] = useState('');
@@ -23,10 +25,33 @@ const LoginScreen = ({navigation}: any) => {
 
   const dispatch = useDispatch();
 
-  const handleLogin = () => {
-    // dispatch(login(email, pass));
-    navigation.navigate('HomeScreen');
+  const loginUser = async () => {
+    database()
+      .ref('users/')
+      .orderByChild('email')
+      .equalTo(email)
+      .once('value')
+      .then(async snapshot => {
+        if (snapshot.val() == null) {
+          console.log('Invalid Email Id!');
+          return false;
+        }
+        let userData = Object.values(snapshot.val())[0];
+        if (userData?.password != pass) {
+          console.log('Invalid Password!');
+          return false;
+        }
+
+        console.log('User data: ', userData);
+        dispatch(setUser(userData));
+        console.log('Login Successfully!');
+      });
   };
+
+  // const handleLogin = () => {
+  //   // dispatch(login(email, pass));
+  //   navigation.navigate('HomeScreen');
+  // };
 
   return (
     <View style={styles.container}>
@@ -50,6 +75,7 @@ const LoginScreen = ({navigation}: any) => {
             onChangeText={onChangeText}
             placeholder="Email"
             keyboardType="email-address"
+            autoCapitalize="none"
           />
           <Text style={STYLES.invalid_notification}>Invalid Email</Text>
           <TextInput
@@ -58,6 +84,7 @@ const LoginScreen = ({navigation}: any) => {
             onChangeText={onChangePass}
             placeholder="Password"
             keyboardType="visible-password"
+            autoCapitalize="none"
             secureTextEntry={true}
           />
           <View style={styles.bottom_password}>
@@ -72,7 +99,7 @@ const LoginScreen = ({navigation}: any) => {
         </View>
         {/* Zone Action */}
         <View style={styles.action_zone}>
-          <TouchableOpacity style={STYLES.normal_button} onPress={handleLogin}>
+          <TouchableOpacity style={STYLES.normal_button} onPress={loginUser}>
             <Text style={STYLES.text_normal_button}>Sign In</Text>
           </TouchableOpacity>
           {/* Login with Google or SignIn */}
