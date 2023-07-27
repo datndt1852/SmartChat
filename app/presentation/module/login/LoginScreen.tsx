@@ -18,6 +18,9 @@ import {STYLES} from '../../theme/styles/IndexStyles';
 import {useDispatch} from 'react-redux';
 import database from '@react-native-firebase/database';
 import {setUser} from '../../redux/Reducer/AuthReducer.js';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import auth from '@react-native-firebase/auth';
+import {loginWithEmailAndPassword} from '../../service/Auth.js';
 
 const LoginScreen = ({navigation}: any) => {
   const [email, onChangeText] = useState('');
@@ -25,33 +28,31 @@ const LoginScreen = ({navigation}: any) => {
 
   const dispatch = useDispatch();
 
-  const loginUser = async () => {
-    database()
-      .ref('users/')
-      .orderByChild('email')
-      .equalTo(email)
-      .once('value')
-      .then(async snapshot => {
-        if (snapshot.val() == null) {
-          console.log('Invalid Email Id!');
-          return false;
-        }
-        let userData = Object.values(snapshot.val())[0];
-        if (userData?.password != pass) {
-          console.log('Invalid Password!');
-          return false;
-        }
+  const loginUser = () => {
+    loginWithEmailAndPassword(email, pass, navigation);
+    // database()
+    //   .ref('users/')
+    //   .orderByChild('email')
+    //   .equalTo(email)
+    //   .once('value')
+    //   .then(snapshot => {
+    //     if (snapshot.exists()) {
+    //       const userData = snapshot.val()[Object.keys(snapshot.val())[0]];
 
-        console.log('User data: ', userData);
-        dispatch(setUser(userData));
-        console.log('Login Successfully!');
-      });
+    //       if (userData.password === pass) {
+    //         dispatch(setUser(userData));
+    //         navigation.navigate('HomeScreen');
+    //       } else {
+    //         console.log('Invalid Password!');
+    //       }
+    //     } else {
+    //       console.log('Invalid Email Id!');
+    //     }
+    //   })
+    //   .catch(error => {
+    //     console.log('Error during login: ', error);
+    //   });
   };
-
-  // const handleLogin = () => {
-  //   // dispatch(login(email, pass));
-  //   navigation.navigate('HomeScreen');
-  // };
 
   return (
     <View style={styles.container}>
