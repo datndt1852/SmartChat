@@ -1,5 +1,5 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {FontSize} from '../../theme/IndexTheme';
 import {
   ICON_MENU,
@@ -10,6 +10,9 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {STYLES} from '../../theme/styles/IndexStyles';
 
 const HomeScreen = ({navigation}: any) => {
+  useEffect(() => {
+    navigation.setOptions({gestureEnabled: false});
+  });
   return (
     <View style={styles.container}>
       <View style={styles.header}>
