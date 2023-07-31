@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 import {LOGO_APP} from '../../theme/image/IndexSourceImage';
-import {useDispatch} from 'react-redux';
 import {checkUserLoggedIn} from '../../service/Auth.js';
 
 const SplashScreen = ({navigation}) => {

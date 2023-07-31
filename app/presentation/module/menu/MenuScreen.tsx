@@ -18,6 +18,7 @@ import {
   BUTTON_BACK_BLACK,
 } from '../../theme/image/IndexSourceImage';
 import {FontSize} from '../../theme/IndexTheme';
+import {logout} from '../../service/Auth.js';
 
 const MenuScreen = ({navigation}) => {
   return (
@@ -55,10 +56,12 @@ const MenuScreen = ({navigation}) => {
               <Image source={DEVICE_PAIRING} />
               <Text style={styles.title_item_menu}>Device Pairing</Text>
             </View>
-            <View style={styles.item_menu}>
+            <TouchableOpacity
+              style={styles.item_menu}
+              onPress={() => logout({navigation})}>
               <Image source={SETTING} />
               <Text style={styles.title_item_menu}>Setting</Text>
-            </View>
+            </TouchableOpacity>
           </ScrollView>
         </View>
       </View>

@@ -17,8 +17,7 @@ import {FontSize} from '../../theme/IndexTheme';
 import {Color} from '../../theme/color/Colors';
 import {STYLES} from '../../theme/styles/IndexStyles';
 import {ScrollView} from 'react-native-gesture-handler';
-import uuid from 'react-native-uuid';
-import database from '@react-native-firebase/database';
+import {registerWithEmailAndPassword} from '../../service/Auth.js';
 
 const SignUpScreen = ({navigation}: any) => {
   const [email, setEmail] = useState('');
@@ -31,22 +30,7 @@ const SignUpScreen = ({navigation}: any) => {
   };
 
   const registerUser = async () => {
-    let data = {
-      id: uuid.v4(),
-      name: name,
-      email: email,
-      password: pass,
-    };
-    database()
-      .ref('users/' + data.id)
-      .set(data)
-      .then(() => {
-        setCfPass('');
-        setEmail('');
-        setName('');
-        setPass('');
-        navigation.navigate('LoginScreen');
-      });
+    registerWithEmailAndPassword(email, pass, name, navigation);
   };
   return (
     <View style={styles.container}>
@@ -108,7 +92,7 @@ const SignUpScreen = ({navigation}: any) => {
                 value={cfpass}
                 style={STYLES.box_input_pass}
                 onChangeText={setCfPass}
-                placeholder="Password"
+                placeholder="Confirm Password"
                 keyboardType="visible-password"
                 autoCapitalize="none"
                 secureTextEntry={!showPassword}

@@ -26,32 +26,8 @@ const LoginScreen = ({navigation}: any) => {
   const [email, onChangeText] = useState('');
   const [pass, onChangePass] = useState('');
 
-  const dispatch = useDispatch();
-
   const loginUser = () => {
     loginWithEmailAndPassword(email, pass, navigation);
-    // database()
-    //   .ref('users/')
-    //   .orderByChild('email')
-    //   .equalTo(email)
-    //   .once('value')
-    //   .then(snapshot => {
-    //     if (snapshot.exists()) {
-    //       const userData = snapshot.val()[Object.keys(snapshot.val())[0]];
-
-    //       if (userData.password === pass) {
-    //         dispatch(setUser(userData));
-    //         navigation.navigate('HomeScreen');
-    //       } else {
-    //         console.log('Invalid Password!');
-    //       }
-    //     } else {
-    //       console.log('Invalid Email Id!');
-    //     }
-    //   })
-    //   .catch(error => {
-    //     console.log('Error during login: ', error);
-    //   });
   };
 
   return (
